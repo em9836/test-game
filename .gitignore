@@ -1,0 +1,12 @@
+**/node_modules
+**/.vscode
+*.zip
+*.css.map
+*.code-workspace
+**/logs
+/build
+/dist
+/.idea
+
+
+

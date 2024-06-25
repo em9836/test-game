@@ -1,0 +1,105 @@
+.gui-log {
+  height: 100%;
+  width: 100%;
+  min-height: 50px;
+  min-width: 50px;
+}
+.gui-log .log-channel {
+  height: 100%;
+  width: 100%;
+  max-width: max-content;
+  min-height: fit-content;
+  overflow-y: auto;
+  display: block;
+}
+.gui-log .log-msg {
+  width: 100%;
+  font-size: 14px;
+  color: #000000;
+  display: inline-block;
+}
+.gui-log .log-msg .log-msg-label {
+  float: left;
+  left: 0;
+}
+
+.gui input {
+  -webkit-appearance: none;
+  color: var(--theme-color);
+  border-color: var(--border-color);
+}
+
+.gui input {
+  -webkit-appearance: none;
+}
+.gui input:focus {
+  outline: none;
+}
+.gui input::placeholder {
+  color: white;
+  font-style: italic;
+}
+
+.gui .gui-select select {
+  -webkit-appearance: none;
+  background: var(--theme-bg);
+  border-color: var(--theme-border);
+  border-width: var(--border-width);
+  border-radius: var(--border-rad);
+  border-style: solid;
+  padding: 0 2px;
+}
+.gui .gui-select select:hover {
+  border-color: var(--theme-color);
+}
+.gui .gui-select select:active {
+  border-color: var(--theme-color);
+}
+.gui .gui-select select:focus {
+  outline: none;
+}
+.gui .gui-select select .option, .gui .gui-select select option {
+  -webkit-appearance: none;
+}
+.gui .gui-select select .option:hover, .gui .gui-select select option:hover {
+  border-color: var(--theme-color);
+  background-color: var(--theme-color);
+  color: var(--theme-bg);
+}
+
+.slider, input[type=range] {
+  -webkit-appearance: none;
+  color: var(--theme-color);
+}
+.slider::-webkit-media-slider-thumb, input[type=range]::-webkit-media-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  color: var(--theme-color);
+}
+.slider::-webkit-slider-runnable-track, input[type=range]::-webkit-slider-runnable-track {
+  height: 15px;
+  -webkit-appearance: none;
+  color: var(--theme-color);
+  margin-top: -1px;
+}
+.slider::-ms-thumb, input[type=range]::-ms-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  color: var(--theme-color);
+  background-color: var(--theme-bg);
+}
+
+#config .body {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 5px;
+}
+
+.overlay {
+  position: fixed;
+  z-index: 2;
+}
+
+/*# sourceMappingURL=gui.css.map */

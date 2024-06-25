@@ -1,0 +1,506 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Almendra SC";
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Special Elite";
+  font-weight: bold;
+}
+@font-face {
+  font-family: "Rosarivo";
+
+}
+@font-face {
+  font-family: "Lugrasimo","Lucida Calligraphy";
+}
+
+:root {
+  --stroke: #000;
+  --theme-color: #fdbd00;
+  //--theme-border: #7E0B02;
+  --theme-border: #690a02;
+  --theme-bg: #9B111E;
+  --default-font:  serif;
+  --heading-font: "Almendra SC" ;
+  --body-font: "";
+  --border-width: 3.5px;
+  --border-color: #da9100;
+  --border-rad: 5px;
+  --font-heading: "";
+  --font-body: 'Times New Roman', times, serif;
+  --txt-border: 1px 0 var(--stroke), -1px 0 var(--stroke), 0 1px var(--stroke), 0 -1px var(--stroke),
+  1px 1px var(--stroke), -1px -1px var(--stroke), 1px -1px var(--stroke), -1px 1px var(--stroke);
+
+}
+
+$stroke: #000;
+$color: var(--theme-color);
+$bg: var(--theme-bg);
+$bcolor: var(--theme-border);
+$bwidth: var(--border-width);
+$bradius: var(--border-rad);
+$slot: 1em;
+$leather: #B67A4F;
+@mixin slot-size {
+  width: 40px;
+  height: 40px;
+}
+
+
+@mixin theme() {
+  background-color: $bg;
+  color: $color;
+  border-color: $bcolor;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+@mixin text-border($color) {
+  text-shadow: 1px 0 $color, -1px 0 $color, 0 1px $color, 0 -1px $color,
+  1px 1px $color, -1px -1px $color, 1px -1px $color, -1px 1px $color;;
+}
+
+@mixin invert {
+  background-color: $color;
+  color: $bg;
+}
+
+@mixin webkit-reset {
+  -webkit-appearance: none;
+}
+
+@mixin border {
+  border-color: $bcolor;
+  border-width: $bwidth;
+  border-radius: $bradius;
+  border-style: solid;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #000;
+  box-sizing: border-box;
+}
+li{
+  list-style: none;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#map {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #000;
+}
+
+#player {
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+
+#container {
+  width: 100%;
+}
+
+/*GUI*/
+.gui {
+  visibility: collapse;
+
+  *[data-visible] {
+    visibility: visible;
+  }
+
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  .gui-slots {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .slot {
+    @include slot-size;
+    @include border;
+    background-color: $bg;
+    margin: 1px;
+    position: relative;
+
+    * {
+      //background-color: transparent;
+    }
+
+    &:hover {
+      border-color: $color;
+    }
+
+    &:hover *[role=button] {
+      color: $bg;
+    }
+
+    font-size: 2em;
+
+    .hot-key-num {
+      width: 16px;
+      height: 16px;
+      font-size: 14px;
+      padding: 0;
+      text-align: left;
+      //justify-content:;
+    }
+  }
+
+  .tooltip {
+    @include border;
+    display: inline-block;
+  }
+
+  .win {
+    .exit {
+      border-width: 0;
+      width: 1.5em;
+      height: 1.5em;
+      line-height: 1;
+      padding: 1px;
+      font-size: 18px;
+      position: absolute;
+      right: 5px;
+      text-align: center;
+      top: 5px;
+    }
+    &#main-menu{
+      align-content: center;
+      justify-content: center;
+      padding: 0;
+      .body,.title{
+        align-content: center;
+        text-align: center;
+        align-self: center;
+      }
+      .title{
+        font-size: 2em!important;
+      }
+      .body{
+        li{
+          padding: 5px 0;
+          display: block;
+        }
+        a{
+          &:hover{
+            &:before{
+              content: '► ';
+            }
+          }
+        }
+      }
+    }
+    //display: block;
+    @include theme;
+    @include border;
+    @include text-border(var(--stroke));
+    padding: 5px;
+    //justify-content: center;
+
+    &#main-menu {
+      //width: ;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    &#inventory {
+      width: 500px;
+      height: 400px;
+
+      #backpack-slots {
+
+      }
+    }
+
+    &#toolbar {
+      border-width: 0!important;
+      background-color: transparent!important;
+      position: fixed;
+      bottom: 0;
+      min-width: fit-content;
+      width: 100%;
+      padding: 0;
+      //ul {
+      //  margin: 0;
+      //  padding: 5px 2px;
+      //  height: 100%;
+      //  width: 100%;
+      //
+      //  li {
+      //    //@include slot-size;
+      //    list-style: none;
+      //  }
+      //}
+
+      .gui-slots {
+        width: fit-content;
+        float: left;
+      }
+
+      .btns {
+        float: right;
+        position: absolute;
+        right: 5px;
+        min-width: fit-content;
+        display: flex;
+        a[role=button] {
+          @include border;
+          margin: 0 1px;
+          float: left;
+          @include slot-size;
+          i {
+            width: 100%;
+            height: 100%;
+            font-size: 30px;
+            justify-content: center;
+            text-align: center;
+          }
+        }
+      }
+
+      button, *[role=button], *[type=button] {
+        @include webkit-reset;
+        border-width: 0;
+        //background-color: transparent;
+        background-color: $bg;
+
+        &:hover {
+          background-color: transparent !important;
+        }
+      }
+      .dropup {
+        display: block;
+        position: relative;
+
+        a[role=button] {
+          position: relative;
+          @include border;
+          //background-color: $bg;
+          &:hover {
+            @include invert;
+          }
+        }
+      }
+      .dropdown-menu {
+      //position: relative;
+        background-color: var(--theme-color);
+        min-width: fit-content;
+        //height: ;
+        padding: 2.5px;
+        box-sizing: border-box;
+        bottom:100%;
+        right:  calc(100% + 20px) !important;
+        @include border;
+        z-index: 3;
+        min-height: fit-content !important;
+
+        li {
+          margin-top: 5px;
+          min-height: fit-content !important;
+          list-style: none;
+
+          a{
+            margin: 2.5px 0;
+            font-size: large;
+            i{
+
+            }
+          }
+        }
+
+
+
+      }
+    }
+
+    &#chat-pane {
+
+    }
+
+    .title {
+      width: 100%;
+      text-align: center;
+      font-size: 1.5em;
+      font-weight: bold;
+    }
+
+    *:is(h1,h2,h3,h4,h5,h6) {
+      font-size: inherit;
+      font-weight: bold;
+      //text-decoration: underline;
+    }
+
+    [type=button], [role=button], button, .gui-btn {
+      @include webkit-reset;
+      @include theme;
+      @include border;
+      @include text-border($stroke);
+      padding: 2px;
+
+      &:hover {
+        @include invert;
+      }
+      &:disabled{
+
+      }
+    }
+
+    input {
+      @include webkit-reset;
+      @include border;
+      @include theme;
+    }
+
+    .body {
+      @include text-border($stroke);
+      @include theme;
+      //&.grid[data-col]{
+      //
+      //}
+    }
+  }
+
+  .overlay {
+    position: fixed;
+    z-index: 2;
+  }
+
+  .gui-select {
+    position: relative;
+    @include text-border($stroke);
+    width: fit-content;
+    //@include webkit-reset;
+    //select {
+    //  display: none;
+    //}
+    //
+    //&.selected {
+    //  background-color: $color;
+    //  color: $bg;
+    //
+    //  &:after {
+    //    position: absolute;
+    //    content: "";
+    //  }
+    //}
+    //
+    //.gui-option {
+    //  @include theme;
+    //  @include text-border($stroke);
+    //
+    //  &.active {
+    //    display: block;
+    //  }
+    //}
+
+    background-color: inherit;
+    color: inherit;
+    //@include border;
+    cursor: pointer;
+    option {
+      @include theme;
+      &:hover {
+        @include invert;
+      }
+    }
+  }
+}
+button, a[role=button], *:is(button,input)[type=button] {
+  @include webkit-reset;
+  border-width: 0;
+  background-color: $bg;
+  //background-color: transparent;
+  &:hover {
+      border-color: $color;
+      transition: border-color 0.5s;
+  }
+  &:active{
+
+  }
+}
+.tab-pane {
+  position: relative;
+  width: 100%;
+
+  .tab-btns {
+    display: flex;
+    width: 100%;
+    margin-top: 5px;
+    padding: 3px 0;
+
+   .nav-tabs{
+     border-color: $bcolor!important;
+     width: 100%;
+     border-bottom-width: 1px;
+     padding: 5px 5px 0 5px;
+   }
+    .active{
+      background-color: $bg;
+      //border-color: $color;
+    }
+  .tab-btn{
+    border-top-width: var(--border-width);
+    border-left-width: var(--border-width);
+    border-right-width: var(--border-width);
+    border-bottom-width: 0;
+    border-radius: 0;
+    font-size: 1.5em;
+  }
+  }
+  .tab-pages {
+    border-color: $bcolor;
+    border-style: inset;
+    border-radius: var(--border-rad);
+    background-color: inherit;
+    width: 100%;
+    height: max-content;
+    display: block;
+    .tab-page {
+      width: 100%;
+
+      &.active {
+        background-color: var(--border-color);
+      }
+    }
+
+  }
+}
+
+#debug #debug-ctrls{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+}
+@keyframes open {
+
+}
+
+@keyframes close {
+
+}
+i {
+  font-size: inherit;
+  justify-content: center;
+  text-align: center;
+
+}

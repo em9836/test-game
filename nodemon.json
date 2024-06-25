@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "ignore": ["node_modules","docs","src",
+    "logs","build",".gitignore",
+    "*.code-workspace","*.config.js"],
+  "exec": "script/main.js",
+  "runOnChangeOnly": false,
+  "spawn": false,
+  "watch": ["./web"],
+  "delay": 500
+}

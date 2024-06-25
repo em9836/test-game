@@ -1,0 +1,144 @@
+$gui-colors: (
+        "default": #ffffff,
+        "info": #00ffff,
+        "error": #ff0000,
+        "success": #00ff00,
+);
+$color: var(--theme-color);
+$bg: var(--theme-bg);
+$bcolor: var(--theme-border);
+$bwidth: var(--border-width);
+$bradius: var(--border-rad);
+@mixin border {
+  border-color: $bcolor;
+  border-width: $bwidth;
+  border-radius: $bradius;
+  border-style: solid;
+}
+
+.gui {
+  width: 100%;
+  height: 100%;
+  
+}
+
+.gui-log {
+  height: 100%;
+  width: 100%;
+  min-height: 50px;
+  min-width: 50px;
+  .log-channel {
+    height: 100%;
+    width: 100%;
+    max-width: max-content;
+    min-height: fit-content;
+    overflow-y: auto;
+    display: block;
+  }
+  .log-msg {
+    width: 100%;
+    font-size: 14px;
+    color: #000000;
+    display: inline-block;
+    .log-msg-label {
+      float: left;
+      left: 0;
+    }
+  }
+}
+
+//FORM CONTROLS
+.gui input {
+  -webkit-appearance: none;
+  color: var(--theme-color);
+  border-color: var(--border-color);
+}
+
+.gui input {
+  -webkit-appearance: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: white;
+    font-style: italic;
+  }
+}
+
+.gui .gui-select {
+  select {
+    -webkit-appearance: none;
+    background: $bg;
+    @include border;
+    padding: 0 2px;
+
+    &:hover {
+      border-color: $color;
+    }
+
+    &:active {
+      border-color: $color;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    .option, option {
+      -webkit-appearance: none;
+
+      &:hover {
+        border-color: $color;
+        background-color: $color;
+        color: $bg;
+      }
+    }
+
+  }
+
+}
+
+.slider, input[type=range] {
+  -webkit-appearance: none;
+  color: var(--theme-color);
+
+  &::-webkit-media-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    color: var(--theme-color);
+  }
+
+  &::-webkit-slider-runnable-track {
+    height: 15px;
+    -webkit-appearance: none;
+    color: $color;
+    margin-top: -1px;
+  }
+
+  &::-ms-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    color: var(--theme-color);
+    background-color: var(--theme-bg);
+  }
+
+}
+
+#config {
+  .body {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 5px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  z-index: 2;
+}
+
+

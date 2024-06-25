@@ -1,0 +1,3 @@
+enum ITEM {
+CONSUMABLE,WEAPON,
+}

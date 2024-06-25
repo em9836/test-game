@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="theme-color" content="#000000" />
+  <meta name="keywords" content="test,itch.io">
+  <meta name="content" content="test,itch.io">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/theme.css" type="text/css">
+  <link rel="stylesheet" href="css/gui.css" type="text/css">
+  <link rel="icon" href="img/favicon.ico" sizes="16x16" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Almendra:wght@400;700&family=Lugrasimo&family=Rosarivo:ital@0;1&family=Special+Elite&display=swap"
+    rel="stylesheet">
+  <style>
+      @import url('https://fonts.googleapis.com/css2?family=Almendra:ital,wght@0,400;0,700;1,400;1,700&family=Lugrasimo&family=Rosarivo:ital@0;1&family=Special+Elite&display=swap');    </style>
+  <title>Test</title>
+  <!--   XXX: SCRIPTS (External Libraries)-->
+<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.3.1/cjs/react.production.min.js"-->
+<!--          integrity="sha512-1ckMrlQ0hrEGq29r/lZjEsnoTNV8+UOH6NFw53XLkd9hINm9EUIlg2npxj0qiJRHTaQHKGu1WV8qIyVxNrfwQQ=="-->
+<!--          crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/5.4.3/typescript.min.js"-->
+<!--          integrity="sha512-ziE9SrlsFN2MZLPWW073lYZrWVCKc9I5pmHhTXS3jAZBCLUVqS2eEZXRZiIgd0PyEF2Kz3f03/1Aqe/ec5rt1g=="-->
+<!--          crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/async/3.2.5/async.min.js"-->
+<!--          integrity="sha512-fqZwaOJ7ja2XX73hVRctp2jNM05KJdA+2Dew0JYOazGvnOhouDOAeH2TQj8k4Gh8HFdvYMg14266EXI3xmZsfw=="-->
+<!--          crossorigin="anonymous" referrerpolicy="no-referrer"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/async/3.2.5/async.min.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/98e4c48f68.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"
+          integrity="sha512-WoO4Ih0CDOSLYafy22wZD/mcJ7k0ESLqtQsFa6zFKnEUrbtuGU+GkLtVhgt93xa2qewG5gKEC6CWlN8OaCTSVg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- <script src="js/front.js" type="text/javascript"></script> -->
+  <script type="importmap">
+    {
+        "imports":{
+            "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/",
+            "resources":"./js/resources.js",
+            "utilities":"./js/util.js",
+            "entities":"./js/lib/entity.js",
+            "gui":"./js/lib/gui.js",
+            "gui":"./js/lib/Map.js",
+            "GameModule":"./js/lib/Game.js"
+            }
+    }
+  </script>
+  <!-- <script src="js/events.js" type="module"></script>
+  <script src="js/util.js" type="module"></script> -->
+<!--  <script src="js/player.js" type="module"></script>-->
+
+
+
+</head>
+<body>
+<div id="images" hidden="hidden">
+  <img src="img/sprite.png" width="32" height="32" alt="sprite">
+  <img src="img/player.png" alt="">
+  <img src="img/map.png" alt="map" id="map_image">
+</div>
+<div id="container">
+  <canvas id="map"></canvas>
+  <!--    <canvas id="player"></canvas>-->
+  <script src="https://threejsfundamentals.org/threejs/resources/threejs/r98/three.min.js"></script>
+</div>
+<div class="gui" id="gui">
+  <div class="win overlay" id="toolbar" data-visible="">
+    <div class="gui-slots" id="hot-bar-slots">
+      <div class="slot">
+        <div class="hot-key-num">1</div>
+      </div>
+      <div class="slot">
+        <div class="hot-key-num">2</div>
+      </div>
+      <div class="slot">
+        <div class="hot-key-num">3</div>
+      </div>
+      <div class="slot">
+        <div class="hot-key-num">4</div>
+      </div>
+      <div class="slot">
+        <div class="hot-key-num">5</div>
+      </div>
+      <div class="slot"></div>
+      <div class="slot"></div>
+      <div class="slot"></div>
+      <div class="slot"></div>
+      <div class="slot"></div>
+      <div class="slot"></div>
+    </div>
+    <div class="btns" id="other">
+
+      <!--  <a role="button" class="toggle-btn gui-btn" id="chat-btn" title="chat">
+            <i class="fa fa-comment-dots"></i>
+        </a>-->
+      <a role="button" class="toggle-btn gui-btn" id="inv-btn" data-target="#inventory"
+         title="inventory">
+        <i class="fa-solid fa-briefcase"></i>
+      </a>
+      <div class="dropup">
+        <a role="button" class="gui-btn" id="opt-btn"
+           data-toggle="dropdown" title="options">
+          <i class="fa fas fa-ellipsis"></i></a>
+        <ul class="dropdown-menu">
+          <li>
+            <a role="button" class="toggle-btn gui-btn" id="dev-btn"
+               data-target="#dev-pane" title="developer">
+              <i class="fa fa-bug"></i>
+            </a>
+          </li>
+          <li>
+            <a role="button" class="toggle-btn gui-btn" id="settings-btn"
+               data-target="#settings-pane" title="settings">
+              <i class="fa fa-gear"></i>
+            </a>
+          </li>
+          <li>
+            <a role="button" class="toggle-btn gui-btn"
+               data-target="#main-menu" title="Main Menu">
+              <i class="fa fa-pause"></i>
+            </a>
+          </li>
+          <li>
+            <a role="button" class="toggle-btn gui-btn"
+               data-target="#chat-pane" title="chat">
+              <i class="fa fa-comment-dots"></i>
+            </a>
+          </li>
+          <!--                    <li>-->
+          <!--                        <a role="button" class="toggle-btn gui-btn"-->
+          <!--                           data-target="#settings-pane" title="settings">-->
+          <!--                            <i class="fa fa-gear"></i>-->
+          <!--                        </a>-->
+          <!--                    </li>-->
+          <!--<li><a role="button" class="toggle-btn gui-btn" id="inv-btn" data-target="#inventory"
+                 title="inventory">
+              <i class="fa-solid fa-briefcase"></i>
+          </a></li>-->
+        </ul>
+      </div>
+
+
+    </div>
+  </div>
+  <div id="inventory" class="win overlay">
+    <a role="button" data-win="#inventory" class="exit">X</a>
+    <div class="title">Inventory</div>
+    <div class="body">
+      <div class="stats" id="player-stats">
+
+      </div>
+      <div class="gui-slots" id="backpack-slots">
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+        <div class="slot"></div>
+      </div>
+    </div>
+
+  </div>
+  <div id="dev-pane" class="win overlay" data-visible="">
+    <a role="button" data-win="#dev-pane" class="exit">X</a>
+    <div class="title">Developer Panel</div>
+    <div id="dev-tabs" class="tab-pane" data-orient="horizontal">
+      <div class="tab-btns">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a class="tab-btn" role="button" data-toggle="tab" href="#config" title="configurations">
+              <i class="fa fas fa-gear"></i>
+
+            </a></li>
+          <li><a class="tab-btn" role="button" data-toggle="tab" href="#debug" title="debug">
+            <i class="fa fas fa-bug"></i>
+          </a></li>
+          <li><a class="tab-btn" role="button" data-toggle="tab" href="#logs" title="logs">
+            <i class="fa fas fa-file-lines"></i>
+          </a></li>
+          <li><a class="tab-btn" role="button" data-toggle="tab" href="#test" title="Test">
+            <i class="fa fas fa-flask"></i>
+          </a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="tab-pages tab-content active">
+      <div id="config" class="tab-page tab-pane active">
+        <div class="title">Configurations</div>
+        <div class="body" id="config-form">
+          <label>
+            Username:
+            <input type="text" id="plr-name" name="username" title="username">
+          </label>
+          <label>
+            Player Size:
+            <input type="range" class="slider" id="player-size" name="playerSize" title="player Size">
+          </label>
+          <label>
+            fov:
+            <input type="range" name="fov" min="16" max="32" step="1">
+          </label>
+          <br />
+
+          <div class="gui-select input">
+            <label for="game-map">
+              Select Map:
+              <select class="select" id="game-map" name="map">
+                <option class="gui-option" value="map-inf">Map 1</option>
+                <option class="gui-option" value="map2">Map 2</option>
+                <option class="gui-option" value="map3">Map 3</option>
+              </select>
+            </label>
+          </div>
+          <input type="button" value="Save" id="save-config">
+        </div>
+      </div>
+      <div id="debug" class="tab-page tab-pane">
+        <div class="title">Debug</div>
+        <div class="body">
+          <div class="section">
+            <h4>Game</h4>
+            <div id="debug-ctrls">
+<!--              <label>-->
+<!--                Dev Mode: <input id="dev-toggle" type="range" min="0" max="1" step="1">-->
+<!--              </label>-->
+              <button type="button" id="loadGame">Load Game</button>
+              <button type="button" id="reloadGame">Reload Game</button>
+              <button type="button" id="loadPlayer">Load Player</button>
+              <button type="button" id="reloadPlayer">Reload Player</button>
+            </div>
+            <h4>Chat</h4>
+            <div id="chat-test">
+              <label>
+                Log:
+                <input type="text" name="msg-input" width="50" placeholder="Message">
+              </label>
+              <input type="button" id="chat-btn" name="sendChat" value="Enter">
+            </div>
+            <hr />
+          </div>
+        </div>
+      </div>
+      <div id="logs" class="tab-page tab-pane">
+        <div class="title">Logs</div>
+        <div class="body">
+          <div id="dev-log-channel">
+
+          </div>
+<!--          <div class="gui-log" id="dev-channel">-->
+<!--            <p class="chat-item" data-from="channel">Dev-log</p>-->
+<!--          </div>-->
+        </div>
+      </div>
+      <div id="test" class="tab-page tab-pane">
+        <div class="title">Test</div>
+        <div class="body">
+          <div class="section">
+            <h4>Controls</h4>
+            <div class="grid" id="test-ctrls">
+              <button type="button" onclick="reload();">Reload Page</button>
+              <input type="button" value="Create Pane" name="f">
+              <input type="button" value="Run Test">
+              <input type="button" id="reload-page" value="Reload">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="settings-pane" class="win overlay">
+    <a role="button" data-win="#settings-pane" class="exit">X</a>
+    <h3 class="title">Settings</h3>
+    <div class="body">
+      <section class="section" id="player config">
+        <h4>Player</h4>
+        <label>
+          User ID:
+          <input type="text" name="username" id="userid">
+        </label>
+        <label>
+          Map ID:
+          <input type="text" name="mapId" id="map_id">
+        </label>
+        <label>
+          Position:
+          <input type="text" name="username" id="pos">
+        </label>
+        <button type="button">Load Player</button>
+      </section>
+    </div>
+  </div>
+  <div id="chat-pane" class="win overlay" data-visible="">
+    <div class="title">Chat</div>
+    <div class="body">
+      <div class="tab-btns">
+        <ul class="nav nav-tabs">
+          <li><a role="button" data-toggle="tab" href="#dev-log">Debug</a></li>
+          <li><a role="button" data-toggle="tab" href="#player-log">Player</a></li>
+          <li><a role="button" data-toggle="tab" href="#sys-log">System</a></li>
+        </ul>
+      </div>
+      <div class="tab-pages gui-log">
+        <div id="dev-log" class="tab-page tab-pane active">
+          <div id="dev-channel" class="log-channel"></div>
+        </div>
+        <div id="sys-log" class="tab-page tab-pane">
+          <div id="sys-channel" class="log-channel"></div>
+        </div>
+        <div id="player-log" class="tab-page tab-pane">
+          <div id="player-channel" class="log-channel"></div>
+        </div>
+      </div>
+      <div id="chat-ctrls">*
+        <label>
+          Chat:
+          <input type="text" name="message" id="chat-msg" title="Chat Message" placeholder="chat">
+        </label>
+        <input type="button" value="send" id="chat-send" title="send">
+      </div>
+    </div>
+  </div>
+  <!--  <div class="win overlay" data-gui="pane" data-visible="false" id="chat-pane">
+        <h3>Chat</h3>
+        <div class="tab-pane horizontal">
+            <div class="tab-btn-group">
+                <button class="tab-btn" data-target="#service-log">Log</button>
+                <button class="tab-btn" data-target="#player-log">Player</button>
+            </div>
+            <div class="tab-page-group">
+                <div class="tab-page chat-log" id="service-log" data-visible="false">
+                    <p class="chat-item">Chat Item</p>
+                </div>
+                <div class="tab-page chat-log" id="player-log" data-visible="true">
+                                    <p class="chat-item">Output</p>
+                </div>
+            </div>
+        </div>
+    </div>-->
+  <div class="win overlay" id="main-menu">
+    <a role="button" data-win="#main-menu" class="exit">X</a>
+    <h1 class="title">Bible - RPG</h1>
+    <div class="body">
+      <div class="btn-group mainOptions">
+        <ul>
+          <li>
+            <a role="button" class="gui-btn">New Game</a>
+          </li>
+          <li><a role="button" class="gui-btn">Load Game</a></li>
+          <li>
+            <a role="button" class="gui-btn">Settings</a>
+          </li>
+          <li>
+            <a role="button" class="gui-btn">Quit</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="info">
+</div>
+<!-- <script src="js/game.js" type="module"></script>
+<script src="js/app.js" type="module"></script> -->
+
+<!--<script type="module">-->
+<!--    import * as THREE from 'three';-->
+<!--    import {OrbitControls} from 'three/addons/controls/OrbitControls.js';-->
+<!--</script>-->
+</body>
+</html>

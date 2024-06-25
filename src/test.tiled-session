@@ -1,0 +1,51 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "data/coin.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "data/map-tiles.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "data/map/_1.tmx": {
+            "scale": 1,
+            "selectedLayer": 3,
+            "viewCenter": {
+                "x": 143.5,
+                "y": 111
+            }
+        },
+        "data/player.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "D:/gitlab/itchio/test/src/data",
+    "last.imagePath": "D:/gitlab/itchio/test/src/img",
+    "last.worldFilePath": "D:/gitlab/itchio/test/src/data",
+    "lastUsedTilesetExportFilter": "JSON tileset files (*.tsj *.json)",
+    "loadedWorlds": [
+        "D:/gitlab/itchio/test/src/data/test.world"
+    ],
+    "map.fixedSize": false,
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+    ],
+    "project": "test.tiled-project",
+    "property.type": "bool",
+    "recentFiles": [
+        "data/player.tsx",
+        "data/map-tiles.tsx",
+        "data/coin.tsx",
+        "data/map/_1.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}
